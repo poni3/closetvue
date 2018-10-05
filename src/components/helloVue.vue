@@ -1,21 +1,26 @@
 <template>
 <div class="login-page">
+  <img src="../assets/hello.png" style="height:300px">
   <div class="form">
     <form class="register-form">
       <input type="text" placeholder="name"/>
       <input type="password" placeholder="password"/>
       <input type="text" placeholder="email address"/>
       <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
+      <p class="message">Already registered? <span style="color:red" v-on:click="SignIp">Sign In</span></p>
     </form>
     <form class="login-form">
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
       <button>login</button>
-      <p class="message">Not registered? <a href="/helloWorld">Create an account</a></p>
+      <p class="message">Not registered? <span style="color:red" v-on:click="SignUp">Create an account</span></p>
     </form>
     <br/>
-    <router-link to="/helloWorld">Go to helloWorld</router-link>
+    <router-link to="/dashBord">Go to dashBord</router-link>
+    <br/>
+    <router-link to="/img">Go to imgBord</router-link>
+    <br/>
+    <router-link to="/samBord">Go to sampleBord</router-link>
   </div>
 </div>
 </template>
@@ -27,8 +32,26 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  // 메소드는 `methods` 객체 안에 정의합니다
+  methods: {
+    SignUp: function (event) {
+      // `event` 는 네이티브 DOM 이벤트입니다
+      if (event) {
+        $('.login-form').hide()
+        $('.register-form').show()
+      }
+    },
+    SignIp: function (event) {
+      // `event` 는 네이티브 DOM 이벤트입니다
+      if (event) {
+        $('.register-form').hide()
+        $('.login-form').show()
+      }
+    }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
